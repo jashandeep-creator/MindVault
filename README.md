@@ -25,7 +25,7 @@ runs locally and offline once installed.
 ## Project structure
 
 ```
-LifeSearch/
+MindVault/
 ├── app.py                  # Entry point — launches the Qt application
 ├── core/
 │   ├── database.py          # SQLite + FTS5 schema/migrations, upserts, deletion cleanup, search
@@ -50,7 +50,7 @@ LifeSearch/
 ├── models/                          # (reserved for future data model classes)
 ├── utils/                             # Small shared helper functions
 ├── data/
-│   ├── lifesearch.db                   # Local SQLite database (created on first run, gitignored)
+│   ├── MindVault.db                   # Local SQLite database (created on first run, gitignored)
 │   ├── config.json                      # Local settings, e.g. a configured Tesseract path (gitignored)
 │   └── semantic_index/                   # Local vector index files (gitignored)
 ├── assets/                                # Icons, fonts, static resources
@@ -151,10 +151,10 @@ pip install -r requirements.txt
 **On Windows:** download the installer from the
 [UB-Mannheim Tesseract build](https://github.com/UB-Mannheim/tesseract/wiki)
 (defaults to `C:\Program Files\Tesseract-OCR\tesseract.exe`). Either add
-that folder to `PATH`, or configure the path inside LifeSearch instead
+that folder to `PATH`, or configure the path inside MindVault instead
 (**Settings → Configure Tesseract Path...**).
 
-If Tesseract isn't installed, LifeSearch **will not crash** — images are
+If Tesseract isn't installed, MindVault **will not crash** — images are
 indexed by filename only, with a clear on-screen explanation.
 
 ### 4. Semantic search setup
@@ -164,7 +164,7 @@ first time semantic search runs, `sentence-transformers` downloads the
 `all-MiniLM-L6-v2` model weights (~90 MB) from Hugging Face once and
 caches them locally; every run after that is fully offline.
 
-If the model can't load, LifeSearch **will not crash** — Exact Search
+If the model can't load, MindVault **will not crash** — Exact Search
 keeps working normally, and Semantic Search shows a clear "unavailable"
 message instead of results.
 
