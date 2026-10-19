@@ -1,0 +1,33 @@
+PySide6>=6.7
+watchdog>=4.0
+
+# OCR (V3) - local image text extraction.
+# pytesseract is only a Python wrapper: it shells out to a real
+# Tesseract OCR installation, which is NOT installed by pip.
+# See README.md "OCR setup (Windows)" for install instructions.
+pytesseract>=0.3.10
+Pillow>=10.0
+
+# Semantic search (V4) - local sentence embeddings + local vector index.
+# sentence-transformers downloads the all-MiniLM-L6-v2 model weights
+# from Hugging Face the first time it's used, then caches them locally
+# (~90 MB) - no network calls after that, and no data ever leaves the
+# machine. See README.md "Semantic search setup" for details.
+sentence-transformers>=3.0
+numpy>=1.26
+faiss-cpu>=1.8
+
+# Document extraction (V4.1) - local parsing libraries, one per format
+# family. See core/extractors/ - each of these backs exactly one
+# extractor module and nothing else imports them directly.
+PyMuPDF>=1.24        # .pdf                    (core/extractors/pdf_extractor.py)
+python-docx>=1.1     # .docx                   (core/extractors/office_extractor.py)
+odfpy>=1.4           # .odt / .ods / .odp      (office_/spreadsheet_/presentation_extractor.py)
+openpyxl>=3.1        # .xlsx                   (core/extractors/spreadsheet_extractor.py)
+xlrd>=2.0            # .xls (legacy binary)    (core/extractors/spreadsheet_extractor.py)
+python-pptx>=0.6.23  # .pptx                   (core/extractors/presentation_extractor.py)
+striprtf>=0.0.26     # .rtf                    (core/extractors/rtf_extractor.py)
+psd-tools>=1.9       # .psd (Photoshop)        (core/extractors/psd_extractor.py)
+
+# Testing
+pytest>=8.0
